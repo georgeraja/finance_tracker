@@ -57,7 +57,7 @@ export const AccountForm = ({
         <FormField
           name="name"
           control={form.control}
-          render={(field) => (
+          render={({ field }) => (
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
