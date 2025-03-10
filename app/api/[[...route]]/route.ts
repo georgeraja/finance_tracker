@@ -13,6 +13,8 @@ const routes = app.route("/accounts", accounts);
 
 export const GET = handle(app);
 export const POST = handle(app);
+export const PATCH = handle(app);
+export const DELETE = handle(app);
 
 //Generating RPC type, we also acheive end to end type safety with that
 export type AppType = typeof routes;
