@@ -1,4 +1,6 @@
 "use client";
+
+import { Actions } from "./actions";
 import { InferResponseType } from "hono";
 import { ColumnDef } from "@tanstack/react-table";
 import { client } from "@/lib/hono";
@@ -48,5 +50,9 @@ export const columns: ColumnDef<ResponseType>[] = [
         </Button>
       );
     },
+  },
+  {
+    id: "actions",
+    cell: ({ row }) => <Actions id={row.original.id} />,
   },
 ];
