@@ -15,6 +15,13 @@
       "when": 1733837413283,
       "tag": "0001_certain_wendigo",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1741644993657,
+      "tag": "0002_robust_mephisto",
+      "breakpoints": true
     }
   ]
 }
