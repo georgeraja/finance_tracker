@@ -13,6 +13,7 @@ import { createId } from "@paralleldrive/cuid2";
 import { clerkMiddleware, getAuth } from "@hono/clerk-auth";
 import { zValidator } from "@hono/zod-validator";
 import { error } from "console";
+import { create } from "zustand";
 
 const app = new Hono()
   .get(
@@ -126,6 +127,30 @@ const app = new Hono()
           ...values,
         })
         .returning();
+      return c.json({ data });
+    }
+  )
+  .post(
+    "/bulk-create",
+    clerkMiddleware(),
+    zValidator("json", z.array(insertTransactionSchema.omit({ id: true }))),
+    async (c) => {
+      const auth = getAuth(c);
+      const values = c.req.valid("json");
+      if (!auth?.userId) {
+        return c.json({ error: "Unauthorized" }, 401);
+      }
+
+      const data = await db
+        .insert(transactions)
+        .values(
+          values.map((value) => ({
+            id: createId(),
+            ...value,
+          }))
+        )
+        .returning();
+
       return c.json({ data });
     }
   )
