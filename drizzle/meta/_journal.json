@@ -22,6 +22,13 @@
       "when": 1741644993657,
       "tag": "0002_robust_mephisto",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1743462795347,
+      "tag": "0003_magical_human_robot",
+      "breakpoints": true
     }
   ]
 }
